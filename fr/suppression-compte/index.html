@@ -175,52 +175,167 @@ Courriel : <a href="mailto:privacy@cruise-mu.com">privacy@cruise-mu.com</a>
 <a href="/delete-account/" hreflang="en-CA" lang="en">English</a>
 </nav></div></footer>
 
+<noscript>
+<div style="background:rgba(255,200,0,0.1);border:1px solid #c97800;color:#c97800;padding:14px 18px;border-radius:10px;margin:16px 0;font-size:15px;">
+  JavaScript est requis pour soumettre ce formulaire. Si vous ne pouvez pas l'activer, envoyez votre demande directement par courriel à
+  <a href="mailto:privacy@cruise-mu.com?subject=Demande%20de%20suppression%20de%20compte%20CruisE&body=Veuillez%20supprimer%20mon%20compte%20CruisE%20et%20toutes%20les%20données%20personnelles%20associées.%0A%0ACourriel%20du%20compte%20:%20%0ATéléphone%20(optionnel)%20:" style="color:inherit;">privacy@cruise-mu.com</a>
+  avec votre adresse courriel enregistrée et le sujet « Demande de suppression de compte CruisE ».
+</div>
+</noscript>
+
 <script>
-function handleFormSubmitFr(e) {
-  e.preventDefault();
-  var email = document.getElementById('accountEmailFr').value.trim();
-  var phone = document.getElementById('accountPhoneFr').value.trim();
-  var confirmed = document.getElementById('confirmCheckboxFr').checked;
-  var alertBox = document.getElementById('alertBoxFr');
-  var form = document.getElementById('deleteFormFr');
-  var panel = document.getElementById('confirmPanelFr');
-  var submitBtn = document.getElementById('submitBtnFr');
+(function () {
+  'use strict';
 
-  alertBox.style.display = 'none';
-  alertBox.className = 'alert-box';
+  var API_BASE = 'https://cruise-mu.com/public/api/V1';
+  var LOCALE   = 'fr';
 
-  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    alertBox.textContent = 'Veuillez saisir une adresse courriel valide.';
-    alertBox.className = 'alert-box alert-error';
-    alertBox.style.display = 'block';
-    return false;
+  /* ── Helpers ── */
+  function el(id) { return document.getElementById(id); }
+
+  function showAlert(msg, isError) {
+    var box = el('alertBoxFr');
+    box.textContent = msg;
+    box.className = 'alert-box ' + (isError ? 'alert-error' : 'alert-success');
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  if (!confirmed) {
-    alertBox.textContent = 'Veuillez confirmer que vous comprenez le caractère irréversible de la suppression.';
-    alertBox.className = 'alert-box alert-error';
-    alertBox.style.display = 'block';
-    return false;
+  function hideAlert() {
+    var box = el('alertBoxFr');
+    box.style.display = 'none';
+    box.className = 'alert-box';
   }
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Envoi en cours...';
+  function resetSubmitBtn() {
+    var btn = el('submitBtnFr');
+    if (btn) { btn.disabled = false; btn.textContent = 'Envoyer la demande'; }
+  }
 
-  var dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  var randStr = Math.floor(1000 + Math.random() * 9000);
-  var refId = 'DEL-FR-' + dateStr + '-' + randStr;
+  /* ── Verification flow (page load, when ?action=verify&ref=...&token=... present) ── */
+  function maybeHandleVerification() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('action') !== 'verify') return;
 
-  setTimeout(function() {
-    form.style.display = 'none';
-    document.getElementById('refCodeFr').textContent = refId;
-    document.getElementById('confirmedEmailFr').textContent = email;
-    panel.style.display = 'block';
-    panel.scrollIntoView({ behavior: 'smooth' });
-  }, 400);
+    var ref   = params.get('ref');
+    var token = params.get('token');
+    if (!ref || !token) return;
 
-  return false;
-}
+    var form  = el('deleteFormFr');
+    var panel = el('confirmPanelFr');
+
+    if (form) form.style.display = 'none';
+    if (panel) {
+      panel.style.display = 'block';
+      panel.querySelector('h3').textContent = '⏳ Vérification en cours…';
+      panel.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    fetch(API_BASE + '/account/delete-request/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ reference_id: ref, token: token })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, data: d }; }); })
+    .then(function(res) {
+      if (res.ok || (res.data && res.data.data && res.data.data.status === 'completed')) {
+        if (panel) {
+          var h3 = panel.querySelector('h3');
+          if (h3) h3.textContent = '✓ Compte définitivement supprimé';
+          var refSpan = el('refCodeFr');
+          if (refSpan) refSpan.textContent = res.data.data.reference_id || ref;
+          var emailSpan = el('confirmedEmailFr');
+          if (emailSpan) emailSpan.textContent = '(confirmé via le lien de courriel)';
+          var firstP = panel.querySelector('p');
+          if (firstP) firstP.innerHTML =
+            'Votre compte CruisE et toutes les données associées ont été <strong>définitivement supprimés</strong> de nos systèmes.<br>' +
+            'Un courriel de confirmation a été envoyé à votre adresse enregistrée.';
+        }
+        history.replaceState(null, '', window.location.pathname);
+      } else {
+        if (panel) panel.style.display = 'none';
+        if (form) form.style.display = '';
+        showAlert(
+          (res.data && res.data.message) ||
+          'Vérification échouée. Le lien a peut-être expiré. Veuillez soumettre une nouvelle demande.',
+          true
+        );
+      }
+    })
+    .catch(function() {
+      if (panel) panel.style.display = 'none';
+      if (form) form.style.display = '';
+      showAlert('Erreur réseau lors de la vérification. Veuillez réessayer ou contacter privacy@cruise-mu.com.', true);
+    });
+  }
+
+  /* ── Form submission ── */
+  window.handleFormSubmitFr = function(e) {
+    e.preventDefault();
+    hideAlert();
+
+    var email     = el('accountEmailFr').value.trim();
+    var phone     = el('accountPhoneFr').value.trim();
+    var confirmed = el('confirmCheckboxFr').checked;
+    var form      = el('deleteFormFr');
+    var panel     = el('confirmPanelFr');
+    var submitBtn = el('submitBtnFr');
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      showAlert('Veuillez saisir une adresse courriel valide.', true);
+      return false;
+    }
+    if (!confirmed) {
+      showAlert('Veuillez confirmer que vous comprenez le caractère irréversible de la suppression.', true);
+      return false;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+
+    var mailSubject = encodeURIComponent('Demande de suppression de compte CruisE - ' + email);
+    var mailBody    = encodeURIComponent(
+      'DEMANDE DE SUPPRESSION DE COMPTE\nCourriel enregistré : ' + email + '\nTéléphone / Véhicule : ' + (phone || 'N/A')
+    );
+    el('emailFallbackBtnFr').href = 'mailto:privacy@cruise-mu.com?subject=' + mailSubject + '&body=' + mailBody;
+
+    fetch(API_BASE + '/account/delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, phone_or_vehicle: phone || null, reason: null, locale: LOCALE })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, data: d }; }); })
+    .then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        el('refCodeFr').textContent = res.data.data.reference_id;
+        el('confirmedEmailFr').textContent = res.data.data.email;
+        panel.style.display = 'block';
+        panel.scrollIntoView({ behavior: 'smooth' });
+      } else if (res.status === 429) {
+        resetSubmitBtn();
+        showAlert('Trop de tentatives. Veuillez patienter une minute et réessayer.', true);
+      } else {
+        resetSubmitBtn();
+        showAlert(
+          (res.data && res.data.message) ||
+          'Une erreur s'est produite. Réessayez ou envoyez un courriel à privacy@cruise-mu.com.',
+          true
+        );
+      }
+    })
+    .catch(function() {
+      resetSubmitBtn();
+      showAlert('Erreur réseau. Vérifiez votre connexion et réessayez, ou contactez privacy@cruise-mu.com.', true);
+    });
+
+    return false;
+  };
+
+  document.addEventListener('DOMContentLoaded', maybeHandleVerification);
+
+})();
 </script>
 </body>
 </html>

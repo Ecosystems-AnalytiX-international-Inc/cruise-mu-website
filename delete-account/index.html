@@ -315,71 +315,180 @@ General inquiries: <a href="mailto:info@cruise-mu.com">info@cruise-mu.com</a>
 <a href="/fr/suppression-compte/" hreflang="fr-CA" lang="fr">Français</a>
 </nav></div></footer>
 
+<noscript>
+<div style="background:rgba(255,200,0,0.1);border:1px solid #c97800;color:#c97800;padding:14px 18px;border-radius:10px;margin:16px 0;font-size:15px;">
+  JavaScript is required to submit this form. If you cannot enable JavaScript, please email your deletion request directly to
+  <a href="mailto:privacy@cruise-mu.com?subject=CruisE%20Account%20Deletion%20Request&body=Please%20delete%20my%20CruisE%20account%20and%20all%20associated%20personal%20data.%0A%0ARegistered%20Email%3A%20%0APhone%20(optional)%3A%20" style="color:inherit;">privacy@cruise-mu.com</a>
+  with your registered email address and subject line "CruisE Account Deletion Request".
+</div>
+</noscript>
+
 <script>
-function handleFormSubmit(e) {
-  e.preventDefault();
-  var email = document.getElementById('accountEmail').value.trim();
-  var phone = document.getElementById('accountPhone').value.trim();
-  var reason = document.getElementById('deleteReason').value;
-  var confirmed = document.getElementById('confirmCheckbox').checked;
-  var alertBox = document.getElementById('alertBox');
-  var form = document.getElementById('deleteForm');
-  var panel = document.getElementById('confirmPanel');
-  var submitBtn = document.getElementById('submitBtn');
+(function () {
+  'use strict';
 
-  alertBox.style.display = 'none';
-  alertBox.className = 'alert-box';
+  var API_BASE = 'https://cruise-mu.com/public/api/V1';
+  var LOCALE   = 'en';
 
-  // Validation
-  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    alertBox.textContent = 'Please enter a valid account email address.';
-    alertBox.className = 'alert-box alert-error';
-    alertBox.style.display = 'block';
-    return false;
+  /* ── Helpers ── */
+  function el(id) { return document.getElementById(id); }
+
+  function showAlert(msg, isError) {
+    var box = el('alertBox');
+    box.textContent = msg;
+    box.className = 'alert-box ' + (isError ? 'alert-error' : 'alert-success');
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  if (!confirmed) {
-    alertBox.textContent = 'Please confirm that you understand account deletion is permanent.';
-    alertBox.className = 'alert-box alert-error';
-    alertBox.style.display = 'block';
-    return false;
+  function hideAlert() {
+    var box = el('alertBox');
+    box.style.display = 'none';
+    box.className = 'alert-box';
   }
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Submitting Request...';
+  function resetSubmitBtn() {
+    var btn = el('submitBtn');
+    if (btn) { btn.disabled = false; btn.textContent = 'Submit Deletion Request'; }
+  }
 
-  // Generate unique request reference
-  var dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  var randStr = Math.floor(1000 + Math.random() * 9000);
-  var refId = 'DEL-' + dateStr + '-' + randStr;
+  /* ── Verification flow (page load, when ?action=verify&ref=...&token=... present) ── */
+  function maybeHandleVerification() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('action') !== 'verify') return;
 
-  // Prepare mailto fallback link with prefilled details
-  var mailSubject = encodeURIComponent('Account Deletion Request [' + refId + '] - ' + email);
-  var mailBody = encodeURIComponent(
-    'ACCOUNT DELETION REQUEST\n' +
-    '-------------------------\n' +
-    'Reference: ' + refId + '\n' +
-    'Registered Email: ' + email + '\n' +
-    'Phone / Vehicle: ' + (phone || 'N/A') + '\n' +
-    'Reason: ' + (reason || 'User requested') + '\n' +
-    'Date: ' + new Date().toUTCString() + '\n\n' +
-    'I confirm that I am requesting the permanent deletion of my CruisE account and all associated personal data.'
-  );
+    var ref   = params.get('ref');
+    var token = params.get('token');
+    if (!ref || !token) return;
 
-  var mailtoUrl = 'mailto:privacy@cruise-mu.com?subject=' + mailSubject + '&body=' + mailBody;
-  document.getElementById('emailFallbackBtn').href = mailtoUrl;
+    // Hide submission form, show loading state
+    var form = el('deleteForm');
+    if (form) form.style.display = 'none';
 
-  setTimeout(function() {
-    form.style.display = 'none';
-    document.getElementById('refCode').textContent = refId;
-    document.getElementById('confirmedEmail').textContent = email;
-    panel.style.display = 'block';
-    panel.scrollIntoView({ behavior: 'smooth' });
-  }, 400);
+    var panel = el('confirmPanel');
+    if (panel) {
+      panel.style.display = 'block';
+      panel.querySelector('h3').textContent = '⏳ Verifying ownership…';
+      panel.scrollIntoView({ behavior: 'smooth' });
+    }
 
-  return false;
-}
+    fetch(API_BASE + '/account/delete-request/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ reference_id: ref, token: token })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, data: d }; }); })
+    .then(function(res) {
+      if (res.ok || res.data.status === 'completed') {
+        if (panel) {
+          var h3 = panel.querySelector('h3');
+          if (h3) h3.textContent = '✓ Account Permanently Deleted';
+          var refSpan = el('refCode');
+          if (refSpan) refSpan.textContent = res.data.data.reference_id || ref;
+          var emailSpan = el('confirmedEmail');
+          if (emailSpan) emailSpan.textContent = '(confirmed via email link)';
+          // Update status line
+          var statusLines = panel.querySelectorAll('p, li');
+          panel.querySelector('p').innerHTML =
+            'Your CruisE account and all associated personal data have been <strong>permanently deleted</strong> from our systems.<br>' +
+            'A confirmation email has been sent to your registered address.';
+        }
+        // Clean URL
+        history.replaceState(null, '', window.location.pathname);
+      } else {
+        if (panel) panel.style.display = 'none';
+        if (form) form.style.display = '';
+        showAlert(
+          (res.data && res.data.message) ||
+          'Verification failed. The link may have expired. Please submit a new request.',
+          true
+        );
+      }
+    })
+    .catch(function() {
+      if (panel) panel.style.display = 'none';
+      if (form) form.style.display = '';
+      showAlert('Network error during verification. Please try again or contact privacy@cruise-mu.com.', true);
+    });
+  }
+
+  /* ── Form submission ── */
+  window.handleFormSubmit = function(e) {
+    e.preventDefault();
+    hideAlert();
+
+    var email     = el('accountEmail').value.trim();
+    var phone     = el('accountPhone').value.trim();
+    var reason    = el('deleteReason').value;
+    var confirmed = el('confirmCheckbox').checked;
+    var form      = el('deleteForm');
+    var panel     = el('confirmPanel');
+    var submitBtn = el('submitBtn');
+
+    // Client-side validation
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      showAlert('Please enter a valid account email address.', true);
+      return false;
+    }
+    if (!confirmed) {
+      showAlert('Please confirm that you understand account deletion is permanent.', true);
+      return false;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    // Update mailto fallback with current email
+    var mailSubject = encodeURIComponent('CruisE Account Deletion Request - ' + email);
+    var mailBody    = encodeURIComponent(
+      'ACCOUNT DELETION REQUEST\n' +
+      'Registered Email: ' + email + '\n' +
+      'Phone / Vehicle: ' + (phone || 'N/A') + '\n' +
+      'Reason: ' + (reason || 'Not specified') + '\n' +
+      'Date: ' + new Date().toUTCString()
+    );
+    el('emailFallbackBtn').href = 'mailto:privacy@cruise-mu.com?subject=' + mailSubject + '&body=' + mailBody;
+
+    // Real API call
+    fetch(API_BASE + '/account/delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, phone_or_vehicle: phone || null, reason: reason || null, locale: LOCALE })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, data: d }; }); })
+    .then(function(res) {
+      if (res.ok) {
+        // Success — show confirmation panel with real reference ID from server
+        form.style.display = 'none';
+        el('refCode').textContent = res.data.data.reference_id;
+        el('confirmedEmail').textContent = res.data.data.email;
+        panel.style.display = 'block';
+        panel.scrollIntoView({ behavior: 'smooth' });
+      } else if (res.status === 429) {
+        resetSubmitBtn();
+        showAlert('Too many requests. Please wait a minute and try again.', true);
+      } else {
+        resetSubmitBtn();
+        showAlert(
+          (res.data && res.data.message) ||
+          'An error occurred. Please try again or email privacy@cruise-mu.com.',
+          true
+        );
+      }
+    })
+    .catch(function() {
+      resetSubmitBtn();
+      showAlert('Network error. Please check your connection and try again, or email privacy@cruise-mu.com.', true);
+    });
+
+    return false;
+  };
+
+  /* ── On DOM ready ── */
+  document.addEventListener('DOMContentLoaded', maybeHandleVerification);
+
+})();
 </script>
 </body>
 </html>
