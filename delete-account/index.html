@@ -1,503 +1,621 @@
 <!doctype html>
 <html lang="en-CA">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Account and Data Deletion · CruisE</title>
-<meta name="description" content="Request deletion of your CruisE account and associated personal data in accordance with Google Play and Apple App Store policies.">
-<link rel="canonical" href="https://www.cruise-mu.com/delete-account/">
-<link rel="alternate" hreflang="en-CA" href="https://www.cruise-mu.com/delete-account/">
-<link rel="alternate" hreflang="x-default" href="https://www.cruise-mu.com/delete-account/">
-<meta property="og:title" content="Account and Data Deletion · CruisE">
-<meta property="og:description" content="Request deletion of your CruisE account and personal data. Quick, straightforward, and compliant.">
-<meta property="og:image" content="https://www.cruise-mu.com/assets/og.jpg">
-<meta property="og:url" content="https://www.cruise-mu.com/delete-account/">
-<meta property="og:locale" content="en_CA">
-<meta name="theme-color" content="#0e0e0e">
-<link rel="icon" href="/assets/favicon-64.png" type="image/png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/style.css">
-<style>
-  .del-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    margin: 24px 0;
-  }
-  .del-card h3 {
-    margin-top: 0;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .badge-tag {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-  }
-  .badge-instant {
-    background: rgba(0, 170, 141, 0.15);
-    color: var(--accent);
-    border: 1px solid var(--accent);
-  }
-  .badge-web {
-    background: rgba(255, 79, 0, 0.15);
-    color: var(--primary);
-    border: 1px solid var(--primary);
-  }
-  .form-group {
-    margin-bottom: 18px;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--text);
-  }
-  .form-group .hint {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-  .form-control {
-    width: 100%;
-    min-height: 48px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 14px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 16px;
-    transition: border-color .15s ease;
-  }
-  .form-control:focus {
-    outline: none;
-    border-color: var(--primary);
-  }
-  .form-checkbox {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin: 20px 0;
-    cursor: pointer;
-  }
-  .form-checkbox input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-top: 3px;
-    accent-color: var(--primary);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .form-checkbox span {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-  .alert-box {
-    display: none;
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin: 16px 0;
-    font-size: 15px;
-  }
-  .alert-error {
-    background: rgba(255, 102, 102, 0.12);
-    border: 1px solid var(--danger);
-    color: var(--danger);
-  }
-  .alert-success {
-    background: rgba(163, 255, 117, 0.12);
-    border: 1px solid var(--success);
-    color: var(--success);
-  }
-  .confirm-panel {
-    display: none;
-    background: var(--raised);
-    border: 1px solid var(--accent);
-    border-radius: var(--radius);
-    padding: 24px;
-    margin: 24px 0;
-  }
-  .confirm-panel h3 {
-    color: var(--accent);
-    margin-top: 0;
-  }
-  .step-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--primary);
-    color: var(--on-primary);
-    font-weight: 800;
-    font-size: 13px;
-    margin-right: 8px;
-  }
-</style>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <div class="wrap-hero nav">
-    <a class="brand notranslate" translate="no" href="/">
-      <img src="/assets/icon-256.png" alt="CruisE Logo" width="38" height="38">
-      <span class="brand-text">Cruis<span class="e">E</span></span>
-    </a>
-    <nav class="nav-links" aria-label="Main Navigation">
-      <a class="hide-sm" href="/#features">Features</a>
-      <a class="hide-sm" href="/#pricing">Pricing</a>
-      <a class="hide-sm" href="/#faq">FAQ</a>
-      <a href="/advertise/">Advertise</a>
-    </nav>
-    <div class="nav-actions">
-      <a class="lang notranslate" translate="no" href="/fr/" hreflang="fr-CA" lang="fr">FR</a>
-      <a class="nav-btn hide-sm" href="/#download">Get App</a>
-    </div>
-  </div>
-</header>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account &amp; Data Deletion · CruisE Canada</title>
+  <meta name="description"
+    content="Request deletion of your CruisE account and associated vehicle and personal data in accordance with Google Play, Apple App Store, and Canadian PIPEDA/Law 25 policies.">
+  <meta name="keywords" content="CruisE account deletion, delete vehicle data, PIPEDA data removal, CruisE privacy request">
+  <meta name="author" content="Ecosystems AnalytiX international Inc.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="geo.region" content="CA">
+  <meta name="geo.placename" content="Canada">
+  <link rel="canonical" href="https://www.cruise-mu.com/delete-account/">
+  <link rel="alternate" hreflang="en-CA" href="https://www.cruise-mu.com/delete-account/">
+  <link rel="alternate" hreflang="x-default" href="https://www.cruise-mu.com/delete-account/">
 
-<main id="main">
-<article class="wrap doc">
-<h1>Account &amp; Data Deletion</h1>
-<p class="meta">Ecosystem &amp; AnalytiX International Ltd. · CruisE (Canada)</p>
-<p class="lead">You have the right to request the complete deletion of your CruisE account and all associated personal and vehicle data. We provide two easy methods: directly within the mobile application or using the public web request form below without needing to install the app or sign in.</p>
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="CruisE">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Account &amp; Data Deletion · CruisE Canada">
+  <meta property="og:description"
+    content="Request deletion of your CruisE account and personal data. Compliant with Apple, Google, and Canadian privacy standards.">
+  <meta property="og:image" content="https://www.cruise-mu.com/assets/og.jpg">
+  <meta property="og:image:secure_url" content="https://www.cruise-mu.com/assets/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CruisE Account and Data Deletion">
+  <meta property="og:url" content="https://www.cruise-mu.com/delete-account/">
+  <meta property="og:locale" content="en_CA">
 
-<div class="callout">
-<strong>Privacy Officer:</strong> Ecosystem &amp; AnalytiX International Ltd. — <a href="mailto:privacy@cruise-mu.com">privacy@cruise-mu.com</a><br>
-<strong>Processing Commitment:</strong> In-app deletion is instantaneous. Web-initiated deletion requests are verified and processed within 30 days pursuant to Canadian privacy laws (PIPEDA and Quebec Law 25).
-</div>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Account &amp; Data Deletion · CruisE Canada">
+  <meta name="twitter:description"
+    content="Request deletion of your CruisE account and associated data. Processed securely and transparently.">
+  <meta name="twitter:image" content="https://www.cruise-mu.com/assets/og.jpg">
+  <meta name="twitter:image:alt" content="CruisE Account and Data Deletion">
 
-<h2>Method 1: Delete Directly in the Mobile App</h2>
-<div class="del-card">
-  <h3><span>In-App Self-Service Deletion</span> <span class="badge-tag badge-instant">Instant Removal</span></h3>
-  <p>If you have the CruisE app installed on your iPhone or Android device, you can delete your account immediately:</p>
-  <ol style="padding-left:20px; line-height: 1.8;">
-    <li>Open the <strong>CruisE</strong> application on your mobile device.</li>
-    <li>Navigate to the <strong>Account</strong> tab in the bottom navigation bar.</li>
-    <li>Scroll to the <strong>Security &amp; Support</strong> section and tap <strong>Delete account</strong>.</li>
-    <li>Review the warning prompt and confirm by tapping <strong>Delete account</strong>.</li>
-  </ol>
-  <p>Your session will be terminated immediately, and all your personal and vehicle data will be purged from our production databases.</p>
-</div>
+  <meta name="theme-color" content="#0e0e0e">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/assets/favicon-64.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/style.css">
 
-<h2>Method 2: Web Deletion Request Form</h2>
-<div class="del-card">
-  <h3><span>Submit a Deletion Request Online</span> <span class="badge-tag badge-web">No App Required</span></h3>
-  <p>If you have uninstalled the app or no longer have access to your mobile device, please submit your account details below. We will verify your identity via email and process complete deletion from our systems.</p>
-
-  <div id="alertBox" class="alert-box" role="alert"></div>
-
-  <form id="deleteForm" onsubmit="return handleFormSubmit(event)">
-    <div class="form-group">
-      <label for="accountEmail">Registered Account Email *</label>
-      <input type="email" id="accountEmail" name="email" class="form-control" placeholder="name@example.com" required autocomplete="email">
-      <div class="hint">The email address used to create or sign in to your CruisE account.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="accountPhone">Registered Mobile Number or Vehicle Nickname (Optional)</label>
-      <input type="text" id="accountPhone" name="phone_or_vehicle" class="form-control" placeholder="+1 (514) ... or 'Civic 2022'">
-      <div class="hint">Helps our team verify account ownership if you registered primarily via phone.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="deleteReason">Reason for Deletion (Optional)</label>
-      <select id="deleteReason" name="reason" class="form-control" style="background-color: var(--bg);">
-        <option value="">Select a reason (optional)</option>
-        <option value="sold_car">Sold vehicle / no longer drive</option>
-        <option value="privacy">Privacy concerns</option>
-        <option value="switching_app">Switching to another app</option>
-        <option value="too_complex">No longer using tracking features</option>
-        <option value="other">Other reason</option>
-      </select>
-    </div>
-
-    <label class="form-checkbox">
-      <input type="checkbox" id="confirmCheckbox" required>
-      <span><strong>I confirm that I wish to permanently delete my CruisE account.</strong> I understand that this action will permanently erase my vehicle garage, fuel logs, maintenance history, tire tracking, and active subscription benefits. This cannot be undone.</span>
-    </label>
-
-    <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
-      <button type="submit" id="submitBtn" class="btn btn-primary" style="min-width:220px; cursor:pointer;">
-        Submit Deletion Request
-      </button>
-      <a id="emailFallbackBtn" class="btn btn-outline" href="mailto:privacy@cruise-mu.com?subject=CruisE%20Account%20Deletion%20Request&body=Please%20delete%20my%20CruisE%20account%20and%20associated%20personal%20data.%0A%0ARegistered%20Email%3A%20%0APhone%20(optional)%3A%20">
-        Or Request via Email
-      </a>
-    </div>
-  </form>
-
-  <div id="confirmPanel" class="confirm-panel">
-    <h3>✓ Deletion Request Received</h3>
-    <p>Your deletion request has been successfully recorded and logged with our privacy compliance team.</p>
-    <div style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 16px; margin:16px 0; font-family:monospace; font-size:14px;">
-      <strong>Request Reference:</strong> <span id="refCode" style="color:var(--accent);">DEL-CRUISE-20261027-001</span><br>
-      <strong>Target Account:</strong> <span id="confirmedEmail">email@example.com</span><br>
-      <strong>Status:</strong> Pending Ownership Verification
-    </div>
-    <p><strong>What happens next:</strong></p>
-    <ul class="checks">
-      <li>A confirmation email has been initiated to your registered address to ensure you authorized this request.</li>
-      <li>Once confirmed, our automated compliance engine deletes your profile and all vehicle history within 30 days.</li>
-      <li>If you need immediate assistance or have questions, contact <a href="mailto:privacy@cruise-mu.com">privacy@cruise-mu.com</a> quoting your reference code.</li>
-    </ul>
-  </div>
-</div>
-
-<h2>What Data is Deleted and What is Retained</h2>
-<div class="table-scroll">
-<table>
-<thead>
-  <tr>
-    <th>Category</th>
-    <th>Data Types</th>
-    <th>Action &amp; Policy</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><strong>Account &amp; Identity</strong></td>
-    <td>Name, email address, phone number, encrypted password hash, device identifiers.</td>
-    <td><strong>Permanently Deleted</strong> from active databases upon account deletion.</td>
-  </tr>
-  <tr>
-    <td><strong>Vehicles &amp; Records</strong></td>
-    <td>Vehicle details (make, model, year, plate), fill-up &amp; charging history, expense receipts, maintenance logs, reminders, tire sets.</td>
-    <td><strong>Permanently Deleted</strong>. All receipts and logged metrics are purged.</td>
-  </tr>
-  <tr>
-    <td><strong>AI &amp; Consents</strong></td>
-    <td>Ask CruisE question summaries, user consent history, paywall view logs.</td>
-    <td><strong>Permanently Deleted</strong>.</td>
-  </tr>
-  <tr>
-    <td><strong>Financial Records (Exception)</strong></td>
-    <td>Anonymized purchase transaction IDs for Apple App Store / Google Play subscription ledger verification.</td>
-    <td><strong>Retained Anonymously</strong> without user linkage solely as required by Canadian tax laws (e.g. Canada Revenue Agency 6-year retention rule).</td>
-  </tr>
-  <tr>
-    <td><strong>System Backups (Exception)</strong></td>
-    <td>Encrypted automated operational backup archives.</td>
-    <td><strong>Overwritten within 30 days</strong> in the regular rotational cycle.</td>
-  </tr>
-</tbody>
-</table>
-</div>
-
-<h2>Subscriptions and App Stores</h2>
-<p>Please note that deleting your CruisE account does not automatically cancel active paid subscriptions billed through the Apple App Store or Google Play Store. To avoid unwanted charges by Apple or Google:</p>
-<ul>
-  <li><strong>iOS users:</strong> Open iPhone Settings › [Your Name] › Subscriptions › CruisE › Cancel Subscription.</li>
-  <li><strong>Android users:</strong> Open Google Play Store › Profile icon › Payments &amp; subscriptions › Subscriptions › CruisE › Cancel.</li>
-</ul>
-
-<h2>Contact our Privacy Officer</h2>
-<p>For questions regarding your personal information, data portability (Law 25), or this deletion process, contact:</p>
-<p><strong>Privacy Officer</strong><br>
-Ecosystem &amp; AnalytiX International Ltd.<br>
-Ontario, Canada<br>
-Email: <a href="mailto:privacy@cruise-mu.com">privacy@cruise-mu.com</a><br>
-General inquiries: <a href="mailto:info@cruise-mu.com">info@cruise-mu.com</a>
-</p>
-
-</article>
-</main>
-
-<footer class="site-footer"><div class="wrap-hero foot">
-<div>© 2026 Ecosystem &amp; AnalytiX International Ltd. · Ontario, Canada<br><a href="mailto:info@cruise-mu.com">info@cruise-mu.com</a></div>
-<nav aria-label="Footer">
-<a href="/privacy/">Privacy</a>
-<a href="/terms/">Terms of use</a>
-<a href="/delete-account/" aria-current="page">Delete account</a>
-<a href="/advertise/">Advertise</a>
-<a class="notranslate" translate="no" href="/fr/" hreflang="fr-CA" lang="fr">Français</a>
-</nav></div></footer>
-
-<noscript>
-<div style="background:rgba(255,200,0,0.1);border:1px solid #c97800;color:#c97800;padding:14px 18px;border-radius:10px;margin:16px 0;font-size:15px;">
-  JavaScript is required to submit this form. If you cannot enable JavaScript, please email your deletion request directly to
-  <a href="mailto:privacy@cruise-mu.com?subject=CruisE%20Account%20Deletion%20Request&body=Please%20delete%20my%20CruisE%20account%20and%20all%20associated%20personal%20data.%0A%0ARegistered%20Email%3A%20%0APhone%20(optional)%3A%20" style="color:inherit;">privacy@cruise-mu.com</a>
-  with your registered email address and subject line "CruisE Account Deletion Request".
-</div>
-</noscript>
-
-<script>
-(function () {
-  'use strict';
-
-  var API_BASE = 'https://cruise-mu.com/public/api/V1';
-  var LOCALE   = 'en';
-
-  /* ── Helpers ── */
-  function el(id) { return document.getElementById(id); }
-
-  function showAlert(msg, isError) {
-    var box = el('alertBox');
-    box.textContent = msg;
-    box.className = 'alert-box ' + (isError ? 'alert-error' : 'alert-success');
-    box.style.display = 'block';
-    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function hideAlert() {
-    var box = el('alertBox');
-    box.style.display = 'none';
-    box.className = 'alert-box';
-  }
-
-  function resetSubmitBtn() {
-    var btn = el('submitBtn');
-    if (btn) { btn.disabled = false; btn.textContent = 'Submit Deletion Request'; }
-  }
-
-  /* ── Verification flow (page load, when ?action=verify&ref=...&token=... present) ── */
-  function maybeHandleVerification() {
-    var params = new URLSearchParams(window.location.search);
-    if (params.get('action') !== 'verify') return;
-
-    var ref   = params.get('ref');
-    var token = params.get('token');
-    if (!ref || !token) return;
-
-    // Hide submission form, show loading state
-    var form = el('deleteForm');
-    if (form) form.style.display = 'none';
-
-    var panel = el('confirmPanel');
-    if (panel) {
-      panel.style.display = 'block';
-      panel.querySelector('h3').textContent = '⏳ Verifying ownership…';
-      panel.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    fetch(API_BASE + '/account/delete-request/verify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ reference_id: ref, token: token })
-    })
-    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, data: d }; }); })
-    .then(function(res) {
-      if (res.ok || res.data.status === 'completed') {
-        if (panel) {
-          var h3 = panel.querySelector('h3');
-          if (h3) h3.textContent = '✓ Account Permanently Deleted';
-          var refSpan = el('refCode');
-          if (refSpan) refSpan.textContent = res.data.data.reference_id || ref;
-          var emailSpan = el('confirmedEmail');
-          if (emailSpan) emailSpan.textContent = '(confirmed via email link)';
-          // Update status line
-          var statusLines = panel.querySelectorAll('p, li');
-          panel.querySelector('p').innerHTML =
-            'Your CruisE account and all associated personal data have been <strong>permanently deleted</strong> from our systems.<br>' +
-            'A confirmation email has been sent to your registered address.';
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.cruise-mu.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Delete Account",
+            "item": "https://www.cruise-mu.com/delete-account/"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.cruise-mu.com/delete-account/#webpage",
+        "url": "https://www.cruise-mu.com/delete-account/",
+        "name": "Account & Data Deletion · CruisE Canada",
+        "description": "Request deletion of your CruisE account and associated vehicle and personal data in accordance with Google Play, Apple App Store, and Canadian PIPEDA/Law 25 policies.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Ecosystems AnalytiX international Inc.",
+          "url": "https://www.cruise-mu.com/",
+          "logo": "https://www.cruise-mu.com/assets/icon-256.png"
         }
-        // Clean URL
-        history.replaceState(null, '', window.location.pathname);
-      } else {
-        if (panel) panel.style.display = 'none';
-        if (form) form.style.display = '';
-        showAlert(
-          (res.data && res.data.message) ||
-          'Verification failed. The link may have expired. Please submit a new request.',
-          true
-        );
       }
-    })
-    .catch(function() {
-      if (panel) panel.style.display = 'none';
-      if (form) form.style.display = '';
-      showAlert('Network error during verification. Please try again or contact privacy@cruise-mu.com.', true);
-    });
+    ]
   }
-
-  /* ── Form submission ── */
-  window.handleFormSubmit = function(e) {
-    e.preventDefault();
-    hideAlert();
-
-    var email     = el('accountEmail').value.trim();
-    var phone     = el('accountPhone').value.trim();
-    var reason    = el('deleteReason').value;
-    var confirmed = el('confirmCheckbox').checked;
-    var form      = el('deleteForm');
-    var panel     = el('confirmPanel');
-    var submitBtn = el('submitBtn');
-
-    // Client-side validation
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-      showAlert('Please enter a valid account email address.', true);
-      return false;
-    }
-    if (!confirmed) {
-      showAlert('Please confirm that you understand account deletion is permanent.', true);
-      return false;
+  </script>
+  <style>
+    .del-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 24px 0;
     }
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting…';
+    .del-card h3 {
+      margin-top: 0;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    // Update mailto fallback with current email
-    var mailSubject = encodeURIComponent('CruisE Account Deletion Request - ' + email);
-    var mailBody    = encodeURIComponent(
-      'ACCOUNT DELETION REQUEST\n' +
-      'Registered Email: ' + email + '\n' +
-      'Phone / Vehicle: ' + (phone || 'N/A') + '\n' +
-      'Reason: ' + (reason || 'Not specified') + '\n' +
-      'Date: ' + new Date().toUTCString()
-    );
-    el('emailFallbackBtn').href = 'mailto:privacy@cruise-mu.com?subject=' + mailSubject + '&body=' + mailBody;
+    .badge-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
 
-    // Real API call
-    fetch(API_BASE + '/account/delete-request', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, phone_or_vehicle: phone || null, reason: reason || null, locale: LOCALE })
-    })
-    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, data: d }; }); })
-    .then(function(res) {
-      if (res.ok) {
-        // Success — show confirmation panel with real reference ID from server
-        form.style.display = 'none';
-        el('refCode').textContent = res.data.data.reference_id;
-        el('confirmedEmail').textContent = res.data.data.email;
-        panel.style.display = 'block';
-        panel.scrollIntoView({ behavior: 'smooth' });
-      } else if (res.status === 429) {
-        resetSubmitBtn();
-        showAlert('Too many requests. Please wait a minute and try again.', true);
-      } else {
-        resetSubmitBtn();
-        showAlert(
-          (res.data && res.data.message) ||
-          'An error occurred. Please try again or email privacy@cruise-mu.com.',
-          true
-        );
+    .badge-instant {
+      background: rgba(0, 170, 141, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .badge-web {
+      background: rgba(255, 79, 0, 0.15);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .form-group .hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      min-height: 48px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 16px;
+      transition: border-color .15s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 20px 0;
+      cursor: pointer;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 3px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .form-checkbox span {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .alert-box {
+      display: none;
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin: 16px 0;
+      font-size: 15px;
+    }
+
+    .alert-error {
+      background: rgba(255, 102, 102, 0.12);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+    }
+
+    .alert-success {
+      background: rgba(163, 255, 117, 0.12);
+      border: 1px solid var(--success);
+      color: var(--success);
+    }
+
+    .confirm-panel {
+      display: none;
+      background: var(--raised);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .confirm-panel h3 {
+      color: var(--accent);
+      margin-top: 0;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--on-primary);
+      font-weight: 800;
+      font-size: 13px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap-hero nav">
+      <a class="brand notranslate" translate="no" href="/">
+        <img src="/assets/icon-256.png" alt="CruisE Logo" width="38" height="38" fetchpriority="high">
+        <span class="brand-text">Cruis<span class="e">E</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a class="hide-sm" href="/#features">Features</a>
+        <a class="hide-sm" href="/#pricing">Pricing</a>
+        <a class="hide-sm" href="/#faq">FAQ</a>
+        <a href="/advertise/">Advertise</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="lang notranslate" translate="no" href="/fr/" hreflang="fr-CA" lang="fr">FR</a>
+        <a class="nav-btn hide-sm" href="/#download">Get App</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="wrap doc">
+      <h1>Account &amp; Data Deletion</h1>
+      <p class="meta">Ecosystem &amp; AnalytiX International Ltd. · CruisE (Canada)</p>
+      <p class="lead">You have the right to request the complete deletion of your CruisE account and all associated
+        personal and vehicle data. We provide two easy methods: directly within the mobile application or using the
+        public web request form below without needing to install the app or sign in.</p>
+
+      <div class="callout">
+        <strong>Privacy Officer:</strong> Ecosystem &amp; AnalytiX International Ltd. — <a
+          href="mailto:privacy@cruise-mu.com">privacy@cruise-mu.com</a><br>
+        <strong>Processing Commitment:</strong> In-app deletion is instantaneous. Web-initiated deletion requests are
+        verified and processed within 30 days pursuant to Canadian privacy laws (PIPEDA and Quebec Law 25).
+      </div>
+
+      <h2>Method 1: Delete Directly in the Mobile App</h2>
+      <div class="del-card">
+        <h3><span>In-App Self-Service Deletion</span> <span class="badge-tag badge-instant">Instant Removal</span></h3>
+        <p>If you have the CruisE app installed on your iPhone or Android device, you can delete your account
+          immediately:</p>
+        <ol style="padding-left:20px; line-height: 1.8;">
+          <li>Open the <strong>CruisE</strong> application on your mobile device.</li>
+          <li>Navigate to the <strong>Account</strong> tab in the bottom navigation bar.</li>
+          <li>Scroll to the <strong>Security &amp; Support</strong> section and tap <strong>Delete account</strong>.
+          </li>
+          <li>Review the warning prompt and confirm by tapping <strong>Delete account</strong>.</li>
+        </ol>
+        <p>Your session will be terminated immediately, and all your personal and vehicle data will be purged from our
+          production databases.</p>
+      </div>
+
+      <h2>Method 2: Web Deletion Request Form</h2>
+      <div class="del-card">
+        <h3><span>Submit a Deletion Request Online</span> <span class="badge-tag badge-web">No App Required</span></h3>
+        <p>If you have uninstalled the app or no longer have access to your mobile device, please submit your account
+          details below. We will verify your identity via email and process complete deletion from our systems.</p>
+
+        <div id="alertBox" class="alert-box" role="alert"></div>
+
+        <form id="deleteForm" onsubmit="return handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="accountEmail">Registered Account Email *</label>
+            <input type="email" id="accountEmail" name="email" class="form-control" placeholder="name@example.com"
+              required autocomplete="email">
+            <div class="hint">The email address used to create or sign in to your CruisE account.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="accountPhone">Registered Mobile Number or Vehicle Nickname (Optional)</label>
+            <input type="text" id="accountPhone" name="phone_or_vehicle" class="form-control"
+              placeholder="+1 (514) ... or 'Civic 2022'">
+            <div class="hint">Helps our team verify account ownership if you registered primarily via phone.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="deleteReason">Reason for Deletion (Optional)</label>
+            <select id="deleteReason" name="reason" class="form-control" style="background-color: var(--bg);">
+              <option value="">Select a reason (optional)</option>
+              <option value="sold_car">Sold vehicle / no longer drive</option>
+              <option value="privacy">Privacy concerns</option>
+              <option value="switching_app">Switching to another app</option>
+              <option value="too_complex">No longer using tracking features</option>
+              <option value="other">Other reason</option>
+            </select>
+          </div>
+
+          <label class="form-checkbox">
+            <input type="checkbox" id="confirmCheckbox" required>
+            <span><strong>I confirm that I wish to permanently delete my CruisE account.</strong> I understand that this
+              action will permanently erase my vehicle garage, fuel logs, maintenance history, tire tracking, and active
+              subscription benefits. This cannot be undone.</span>
+          </label>
+
+          <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+            <button type="submit" id="submitBtn" class="btn btn-primary" style="min-width:220px; cursor:pointer;">
+              Submit Deletion Request
+            </button>
+            <a id="emailFallbackBtn" class="btn btn-outline"
+              href="mailto:privacy@cruise-mu.com?subject=CruisE%20Account%20Deletion%20Request&body=Please%20delete%20my%20CruisE%20account%20and%20associated%20personal%20data.%0A%0ARegistered%20Email%3A%20%0APhone%20(optional)%3A%20">
+              Or Request via Email
+            </a>
+          </div>
+        </form>
+
+        <div id="confirmPanel" class="confirm-panel">
+          <h3>✓ Deletion Request Received</h3>
+          <p>Your deletion request has been successfully recorded and logged with our privacy compliance team.</p>
+          <div
+            style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 16px; margin:16px 0; font-family:monospace; font-size:14px;">
+            <strong>Request Reference:</strong> <span id="refCode"
+              style="color:var(--accent);">DEL-CRUISE-20261027-001</span><br>
+            <strong>Target Account:</strong> <span id="confirmedEmail">email@example.com</span><br>
+            <strong>Status:</strong> Pending Ownership Verification
+          </div>
+          <p><strong>What happens next:</strong></p>
+          <ul class="checks">
+            <li>A confirmation email has been initiated to your registered address to ensure you authorized this
+              request.</li>
+            <li>Once confirmed, our automated compliance engine deletes your profile and all vehicle history within 30
+              days.</li>
+            <li>If you need immediate assistance or have questions, contact <a
+                href="mailto:privacy@cruise-mu.com">privacy@cruise-mu.com</a> quoting your reference code.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>What Data is Deleted and What is Retained</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Data Types</th>
+              <th>Action &amp; Policy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Account &amp; Identity</strong></td>
+              <td>Name, email address, phone number, encrypted password hash, device identifiers.</td>
+              <td><strong>Permanently Deleted</strong> from active databases upon account deletion.</td>
+            </tr>
+            <tr>
+              <td><strong>Vehicles &amp; Records</strong></td>
+              <td>Vehicle details (make, model, year, plate), fill-up &amp; charging history, expense receipts,
+                maintenance logs, reminders, tire sets.</td>
+              <td><strong>Permanently Deleted</strong>. All receipts and logged metrics are purged.</td>
+            </tr>
+            <tr>
+              <td><strong>AI &amp; Consents</strong></td>
+              <td>Ask CruisE question summaries, user consent history, paywall view logs.</td>
+              <td><strong>Permanently Deleted</strong>.</td>
+            </tr>
+            <tr>
+              <td><strong>Financial Records (Exception)</strong></td>
+              <td>Anonymized purchase transaction IDs for Apple App Store / Google Play subscription ledger
+                verification.</td>
+              <td><strong>Retained Anonymously</strong> without user linkage solely as required by Canadian tax laws
+                (e.g. Canada Revenue Agency 6-year retention rule).</td>
+            </tr>
+            <tr>
+              <td><strong>System Backups (Exception)</strong></td>
+              <td>Encrypted automated operational backup archives.</td>
+              <td><strong>Overwritten within 30 days</strong> in the regular rotational cycle.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Subscriptions and App Stores</h2>
+      <p>Please note that deleting your CruisE account does not automatically cancel active paid subscriptions billed
+        through the Apple App Store or Google Play Store. To avoid unwanted charges by Apple or Google:</p>
+      <ul>
+        <li><strong>iOS users:</strong> Open iPhone Settings › [Your Name] › Subscriptions › CruisE › Cancel
+          Subscription.</li>
+        <li><strong>Android users:</strong> Open Google Play Store › Profile icon › Payments &amp; subscriptions ›
+          Subscriptions › CruisE › Cancel.</li>
+      </ul>
+
+      <h2>Contact our Privacy Officer</h2>
+      <p>For questions regarding your personal information, data portability (Law 25), or this deletion process,
+        contact:</p>
+      <p><strong>Privacy Officer</strong><br>
+        Ecosystem &amp; AnalytiX International Ltd.<br>
+        Ontario, Canada<br>
+        Email: <a href="mailto:privacy@cruise-mu.com">privacy@cruise-mu.com</a><br>
+        General inquiries: <a href="mailto:info@cruise-mu.com">info@cruise-mu.com</a>
+      </p>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap-hero foot">
+      <div>© 2026 Ecosystem &amp; AnalytiX International Ltd. · Ontario, Canada<br><a
+          href="mailto:info@cruise-mu.com">info@cruise-mu.com</a></div>
+      <nav aria-label="Footer">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms of use</a>
+        <a href="/delete-account/" aria-current="page">Delete account</a>
+        <a href="/advertise/">Advertise</a>
+        <a class="notranslate" translate="no" href="/fr/" hreflang="fr-CA" lang="fr">Français</a>
+      </nav>
+    </div>
+  </footer>
+
+  <noscript>
+    <div
+      style="background:rgba(255,200,0,0.1);border:1px solid #c97800;color:#c97800;padding:14px 18px;border-radius:10px;margin:16px 0;font-size:15px;">
+      JavaScript is required to submit this form. If you cannot enable JavaScript, please email your deletion request
+      directly to
+      <a href="mailto:privacy@cruise-mu.com?subject=CruisE%20Account%20Deletion%20Request&body=Please%20delete%20my%20CruisE%20account%20and%20all%20associated%20personal%20data.%0A%0ARegistered%20Email%3A%20%0APhone%20(optional)%3A%20"
+        style="color:inherit;">privacy@cruise-mu.com</a>
+      with your registered email address and subject line "CruisE Account Deletion Request".
+    </div>
+  </noscript>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var API_BASE = 'https://cruise-mu.com/public/api/V1';
+      var LOCALE = 'en';
+
+      /* ── Helpers ── */
+      function el(id) { return document.getElementById(id); }
+
+      function showAlert(msg, isError) {
+        var box = el('alertBox');
+        box.textContent = msg;
+        box.className = 'alert-box ' + (isError ? 'alert-error' : 'alert-success');
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-    })
-    .catch(function() {
-      resetSubmitBtn();
-      showAlert('Network error. Please check your connection and try again, or email privacy@cruise-mu.com.', true);
-    });
 
-    return false;
-  };
+      function hideAlert() {
+        var box = el('alertBox');
+        box.style.display = 'none';
+        box.className = 'alert-box';
+      }
 
-  /* ── On DOM ready ── */
-  document.addEventListener('DOMContentLoaded', maybeHandleVerification);
+      function resetSubmitBtn() {
+        var btn = el('submitBtn');
+        if (btn) { btn.disabled = false; btn.textContent = 'Submit Deletion Request'; }
+      }
 
-})();
-</script>
+      /* ── Verification flow (page load, when ?action=verify&ref=...&token=... present) ── */
+      function maybeHandleVerification() {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('action') !== 'verify') return;
+
+        var ref = params.get('ref');
+        var token = params.get('token');
+        if (!ref || !token) return;
+
+        // Hide submission form, show loading state
+        var form = el('deleteForm');
+        if (form) form.style.display = 'none';
+
+        var panel = el('confirmPanel');
+        if (panel) {
+          panel.style.display = 'block';
+          panel.querySelector('h3').textContent = '⏳ Verifying ownership…';
+          panel.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        fetch(API_BASE + '/account/delete-request/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ reference_id: ref, token: token })
+        })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, status: r.status, data: d }; }); })
+          .then(function (res) {
+            if (res.ok || res.data.status === 'completed') {
+              if (panel) {
+                var h3 = panel.querySelector('h3');
+                if (h3) h3.textContent = '✓ Account Permanently Deleted';
+                var refSpan = el('refCode');
+                if (refSpan) refSpan.textContent = res.data.data.reference_id || ref;
+                var emailSpan = el('confirmedEmail');
+                if (emailSpan) emailSpan.textContent = '(confirmed via email link)';
+                // Update status line
+                var statusLines = panel.querySelectorAll('p, li');
+                panel.querySelector('p').innerHTML =
+                  'Your CruisE account and all associated personal data have been <strong>permanently deleted</strong> from our systems.<br>' +
+                  'A confirmation email has been sent to your registered address.';
+              }
+              // Clean URL
+              history.replaceState(null, '', window.location.pathname);
+            } else {
+              if (panel) panel.style.display = 'none';
+              if (form) form.style.display = '';
+              showAlert(
+                (res.data && res.data.message) ||
+                'Verification failed. The link may have expired. Please submit a new request.',
+                true
+              );
+            }
+          })
+          .catch(function () {
+            if (panel) panel.style.display = 'none';
+            if (form) form.style.display = '';
+            showAlert('Network error during verification. Please try again or contact privacy@cruise-mu.com.', true);
+          });
+      }
+
+      /* ── Form submission ── */
+      window.handleFormSubmit = function (e) {
+        e.preventDefault();
+        hideAlert();
+
+        var email = el('accountEmail').value.trim();
+        var phone = el('accountPhone').value.trim();
+        var reason = el('deleteReason').value;
+        var confirmed = el('confirmCheckbox').checked;
+        var form = el('deleteForm');
+        var panel = el('confirmPanel');
+        var submitBtn = el('submitBtn');
+
+        // Client-side validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+          showAlert('Please enter a valid account email address.', true);
+          return false;
+        }
+        if (!confirmed) {
+          showAlert('Please confirm that you understand account deletion is permanent.', true);
+          return false;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting…';
+
+        // Update mailto fallback with current email
+        var mailSubject = encodeURIComponent('CruisE Account Deletion Request - ' + email);
+        var mailBody = encodeURIComponent(
+          'ACCOUNT DELETION REQUEST\n' +
+          'Registered Email: ' + email + '\n' +
+          'Phone / Vehicle: ' + (phone || 'N/A') + '\n' +
+          'Reason: ' + (reason || 'Not specified') + '\n' +
+          'Date: ' + new Date().toUTCString()
+        );
+        el('emailFallbackBtn').href = 'mailto:privacy@cruise-mu.com?subject=' + mailSubject + '&body=' + mailBody;
+
+        // Real API call
+        fetch(API_BASE + '/account/delete-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, phone_or_vehicle: phone || null, reason: reason || null, locale: LOCALE })
+        })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, status: r.status, data: d }; }); })
+          .then(function (res) {
+            if (res.ok) {
+              // Success — show confirmation panel with real reference ID from server
+              form.style.display = 'none';
+              el('refCode').textContent = res.data.data.reference_id;
+              el('confirmedEmail').textContent = res.data.data.email;
+              panel.style.display = 'block';
+              panel.scrollIntoView({ behavior: 'smooth' });
+            } else if (res.status === 429) {
+              resetSubmitBtn();
+              showAlert('Too many requests. Please wait a minute and try again.', true);
+            } else {
+              resetSubmitBtn();
+              showAlert(
+                (res.data && res.data.message) ||
+                'An error occurred. Please try again or email privacy@cruise-mu.com.',
+                true
+              );
+            }
+          })
+          .catch(function () {
+            resetSubmitBtn();
+            showAlert('Network error. Please check your connection and try again, or email privacy@cruise-mu.com.', true);
+          });
+
+        return false;
+      };
+
+      /* ── On DOM ready ── */
+      document.addEventListener('DOMContentLoaded', maybeHandleVerification);
+
+    })();
+  </script>
 </body>
+
 </html>
