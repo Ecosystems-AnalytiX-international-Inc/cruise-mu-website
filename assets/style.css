@@ -62,10 +62,10 @@ a:hover { color: var(--primary-muted); }
   left: -999px;
   top: 0;
   background: var(--primary);
-  color: #fff;
+  color: #000;
   padding: 10px 16px;
   border-radius: var(--radius-sm);
-  font-weight: 700;
+  font-weight: 800;
   z-index: 100;
 }
 .skip:focus { left: 16px; top: 16px; }
@@ -161,11 +161,11 @@ a:hover { color: var(--primary-muted); }
 }
 .nav-btn {
   background: var(--primary);
-  color: #fff !important;
+  color: #000 !important;
   padding: 8px 18px;
   border-radius: 10px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -174,6 +174,7 @@ a:hover { color: var(--primary-muted); }
 }
 .nav-btn:hover {
   background: var(--primary-muted);
+  color: #000 !important;
   box-shadow: 0 4px 16px var(--primary-glow);
   transform: translateY(-1px);
 }
@@ -220,13 +221,14 @@ a:hover { color: var(--primary-muted); }
 .btn:active { transform: translateY(0); }
 .btn-primary {
   background: var(--primary);
-  color: #ffffff;
+  color: #000000;
+  font-weight: 800;
   box-shadow: 0 4px 20px rgba(255, 79, 0, 0.35);
 }
 .btn-primary:hover {
   background: #ff6524;
   box-shadow: 0 6px 26px rgba(255, 79, 0, 0.45);
-  color: #fff;
+  color: #000000;
 }
 .btn-store {
   background: #000000;
@@ -615,7 +617,13 @@ h1 .hl {
   justify-content: space-between;
   align-items: baseline;
 }
-.phone-card-title h4 { margin: 0; font-size: 16px; font-weight: 800; color: #fff; }
+.phone-card-title h4,
+.phone-card-title .phone-card-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
 .phone-card-subtitle {
   color: var(--muted);
   font-size: 11.5px;
@@ -683,7 +691,8 @@ h1 .hl {
 .phone-action-btn.primary {
   background: var(--primary);
   border-color: transparent;
-  color: #fff;
+  color: #000;
+  font-weight: 800;
   box-shadow: 0 4px 14px var(--primary-glow);
 }
 
@@ -820,7 +829,8 @@ h1 .hl {
 .phone-seg-pill.active {
   background: var(--primary);
   border-color: var(--primary);
-  color: #fff;
+  color: #000;
+  font-weight: 800;
 }
 .phone-kpi-block {
   background: var(--surface);
@@ -884,7 +894,8 @@ h1 .hl {
   font-weight: 800;
   font-size: 14px;
 }
-.phone-profile-text h4 {
+.phone-profile-text h4,
+.phone-profile-text .phone-user-name {
   margin: 0;
   font-size: 13.5px;
   font-weight: 800;
@@ -1105,7 +1116,7 @@ section { padding: clamp(48px, 7vw, 96px) 0; }
   height: 38px;
   border-radius: 50%;
   background: var(--primary);
-  color: #fff;
+  color: #000000;
   font-weight: 800;
   font-size: 16px;
   margin-bottom: 16px;
@@ -1172,7 +1183,7 @@ section { padding: clamp(48px, 7vw, 96px) 0; }
   top: -13px;
   left: 28px;
   background: var(--primary);
-  color: #fff;
+  color: #000000;
   font-size: 11.5px;
   font-weight: 800;
   padding: 4px 14px;
