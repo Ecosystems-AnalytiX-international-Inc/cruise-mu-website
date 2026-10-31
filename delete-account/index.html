@@ -88,7 +88,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: clamp(16px, 3.5vw, 24px);
       margin: 24px 0;
     }
 
@@ -98,6 +98,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .badge-tag {
@@ -203,10 +204,10 @@
 
     .confirm-panel {
       display: none;
-      background: var(--raised);
+      background: var(--surface-raised);
       border: 1px solid var(--accent);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: clamp(16px, 3.5vw, 24px);
       margin: 24px 0;
     }
 
@@ -326,7 +327,7 @@
           </label>
 
           <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
-            <button type="submit" id="submitBtn" class="btn btn-primary" style="min-width:220px; cursor:pointer;">
+            <button type="submit" id="submitBtn" class="btn btn-primary" style="min-width:min(220px, 100%); cursor:pointer;">
               Submit Deletion Request
             </button>
             <a id="emailFallbackBtn" class="btn btn-outline"
