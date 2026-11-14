@@ -326,14 +326,16 @@ a:hover { color: var(--primary-muted); }
 .btn:active { transform: translateY(0); }
 .btn-primary {
   background: var(--primary);
-  color: #000000;
-  font-weight: 800;
-  box-shadow: 0 4px 20px rgba(255, 79, 0, 0.35);
+  color: #0b0c0e;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 .btn-primary:hover {
   background: #ff6524;
-  box-shadow: 0 6px 26px rgba(255, 79, 0, 0.45);
-  color: #000000;
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #0b0c0e;
 }
 .btn-store {
   background: #000000;
@@ -422,13 +424,11 @@ a:hover { color: var(--primary-muted); }
   margin-bottom: 20px;
 }
 .eyebrow-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
+  background: var(--primary);
   display: inline-block;
-  animation: pulseDot 2s infinite ease-in-out;
 }
 @keyframes pulseDot {
   0%, 100% { opacity: 1; transform: scale(1); }
@@ -444,9 +444,6 @@ h1 {
 }
 h1 .hl {
   color: var(--primary);
-  background: linear-gradient(135deg, #ff4f00 10%, #ff8533 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 .lead {
   font-size: clamp(16px, 1.35vw, 21px);
@@ -520,14 +517,7 @@ h1 .hl {
   max-width: 100%;
 }
 .phone-ambient-glow {
-  position: absolute;
-  width: min(440px, 92vw);
-  height: 640px;
-  background: radial-gradient(circle, rgba(255, 79, 0, 0.24) 0%, rgba(0, 170, 141, 0.12) 50%, transparent 75%);
-  filter: blur(55px);
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 50%;
+  display: none !important;
 }
 .phone {
   position: relative;
@@ -540,9 +530,9 @@ h1 .hl {
   border-radius: 52px;
   padding: 12px 12px 10px;
   box-shadow:
-    0 30px 90px -15px rgba(0, 0, 0, 0.9),
-    0 0 50px -10px rgba(255, 79, 0, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    0 24px 60px -12px rgba(0, 0, 0, 0.9),
+    0 4px 16px -2px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1843,8 +1833,17 @@ details p {
   font-weight: 900;
   letter-spacing: -2px;
   line-height: 1;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--primary);
   margin: 0 0 12px;
+}
+
+/* SVG icon helpers for mockup instrument cards */
+.mock-ico, .setting-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: currentColor;
+  flex-shrink: 0;
+  margin-right: 6px;
 }

@@ -224,7 +224,7 @@
 
       <!-- Confirmation Panel (Hidden Initially) -->
       <div id="confirmPanel" style="display:none; margin-top:20px; padding:20px; background:var(--surface-raised); border:1px solid var(--border); border-radius:12px;">
-        <h3 style="color:var(--accent); margin:0 0 10px;">✓ Deletion Request Received</h3>
+        <h3 style="color:var(--accent); margin:0 0 10px;">Deletion Request Received</h3>
         <p style="color:var(--text-secondary); margin:0 0 16px;">
           Your deletion request has been recorded with our privacy compliance team.
         </p>
@@ -355,7 +355,7 @@
     var panel = el('confirmPanel');
     if (panel) {
       panel.style.display = 'block';
-      panel.querySelector('h3').textContent = '⏳ Verifying ownership…';
+      panel.querySelector('h3').textContent = 'Verifying ownership…';
       panel.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -369,7 +369,7 @@
         if (res.ok || (res.data && res.data.status === 'completed')) {
           if (panel) {
             var h3 = panel.querySelector('h3');
-            if (h3) h3.textContent = '✓ Account Permanently Deleted';
+            if (h3) h3.textContent = 'Account Permanently Deleted';
             var refSpan = el('refCode');
             if (refSpan) refSpan.textContent = (res.data && res.data.data && res.data.data.reference_id) || ref;
             var emailSpan = el('confirmedEmail');
