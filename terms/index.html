@@ -22,6 +22,7 @@
 
 <meta name="theme-color" content="#0e0e0e">
 <meta name="color-scheme" content="dark">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="icon" href="/assets/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/style.css">
@@ -64,6 +65,7 @@
   ]
 }
 </script>
+<script src="/assets/main.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -83,9 +85,30 @@
     <div class="nav-actions">
       <a class="lang notranslate" translate="no" href="/fr/terms/" hreflang="fr-CA" lang="fr">FR</a>
       <a class="nav-btn hide-sm" href="/#download">Get App</a>
+          <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
   </div>
-</header>
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Mobile Navigation">
+      <a href="/">Home</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/advertise/">Advertise</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/" aria-current="page">Terms of Use</a>
+      <a href="/delete-account/">Delete Account</a>
+      <div class="mobile-drawer-actions">
+        <a class="btn btn-primary" href="/#download" style="width:100%; justify-content:center;">Get CruisE App</a>
+        <a class="lang notranslate" translate="no" href="/fr/terms/" hreflang="fr-CA" lang="fr" style="text-align:center; padding:10px;">Changer en Français (FR)</a>
+      </div>
+    </nav>
+  </div>
+
 
 <main id="main">
   <!-- Page Hero Header -->
@@ -227,7 +250,7 @@
 
         <h2 id="section-12">12. Roadside Assistance</h2>
         <div class="callout callout-warning">
-          <strong>Emergency Contacts:</strong> In an active emergency, call <strong>911</strong> (Canada &amp; USA), <strong>999/112</strong> (UK), or <strong>000</strong> (Australia). CruisE is a convenience directory, not a direct emergency dispatcher.
+          <strong>Emergency Contacts:</strong> In an active emergency, call <strong><a href="tel:911">911</a></strong> (Canada &amp; USA), <strong><a href="tel:999">999</a>/<a href="tel:112">112</a></strong> (UK), or <strong><a href="tel:000">000</a></strong> (Australia). CruisE is a convenience directory, not a direct emergency dispatcher.
         </div>
 
         <h2 id="section-13">13. Liability and your rights as a consumer</h2>

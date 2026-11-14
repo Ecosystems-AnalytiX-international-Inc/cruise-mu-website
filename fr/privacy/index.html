@@ -32,6 +32,7 @@
 
 <meta name="theme-color" content="#0e0e0e">
 <meta name="color-scheme" content="dark">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="icon" href="/assets/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/style.css">
@@ -74,6 +75,7 @@
   ]
 }
 </script>
+<script src="/assets/main.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Passer au contenu</a>
@@ -93,9 +95,30 @@
     <div class="nav-actions">
       <a class="lang notranslate" translate="no" href="/privacy/" hreflang="en-CA" lang="en">EN</a>
       <a class="nav-btn hide-sm" href="/fr/#download">Télécharger</a>
+          <button class="mobile-menu-btn" aria-label="Ouvrir le menu mobile" aria-expanded="false" aria-controls="mobileDrawer">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
   </div>
-</header>
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Navigation mobile">
+      <a href="/fr/">Accueil</a>
+      <a href="/fr/#features">Fonctions</a>
+      <a href="/fr/#pricing">Tarifs</a>
+      <a href="/fr/#faq">FAQ</a>
+      <a href="/fr/advertise/">Publicité</a>
+      <a href="/fr/privacy/" aria-current="page">Confidentialité</a>
+      <a href="/fr/terms/">Conditions</a>
+      <a href="/delete-account/">Supprimer le compte</a>
+      <div class="mobile-drawer-actions">
+        <a class="btn btn-primary" href="/fr/#download" style="width:100%; justify-content:center;">Télécharger l'app</a>
+        <a class="lang notranslate" translate="no" href="/privacy/" style="text-align:center; padding:10px;">Switch to English (EN)</a>
+      </div>
+    </nav>
+  </div>
+
 
 <main id="main">
   <!-- Page Hero Header -->
